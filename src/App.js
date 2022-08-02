@@ -2,21 +2,22 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Landing from './components/Landing';
 import Home from './components/Home';
-import Users from './components/Users';
-import Projects from './components/Projects';
-import Roles from './components/Roles';
-import Refresh from './components/Refresh';
+import PersistLogin from './components/PersistLogin';
+import RequireAuth from './components/RequireAuth';
 
+const ROLES = {
+  'User': 1971
+}
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/landing" element={<Landing />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/roles" element={<Roles />} />
-        <Route path="/refresh" element={<Refresh />} />        
+        <Route element={<PersistLogin />} >
+          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />} >
+            <Route path="/" element={<Home />} />
+          </Route>
+        </Route>
+        <Route path="landing" element={<Landing />} />
       </Route>
     </Routes>
   );

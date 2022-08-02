@@ -1,16 +1,41 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useRegisterMutation } from "../../features/auth/authApiSlice";
+import { setCredentials } from "../../features/auth/authSlice";
 
 function Register() {
 
     const [email, setEmail] = useState("")
+    const [user, setUser] = useState("")
     const [password, setPassword] = useState("")
     const [passwordVerify, setPasswordVerify] = useState("")
+
+    // const {getLoggedIn} = useContext(AuthContext)
+    const navi = useNavigate()
+    const dispatch = useDispatch()
+    const [register] = useRegisterMutation()
+    
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+        try {
+            const userData = await register({ email, password, passwordVerify, user}).unwrap()
+            dispatch(setCredentials({...userData, user: email}))
+            setEmail('')
+            setPassword('')
+            navi("/")
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div>
             <h1> Register</h1>
-            <form >
-            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+            <form onSubmit={handleSubmit}>
+            <input size="35" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+            <input size="35" type="text" placeholder="UserName" onChange={(e) => setUser(e.target.value)} value={user}/>
             <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
             <input type="password" placeholder="Verify Password" onChange={(e) => setPasswordVerify(e.target.value)} value={passwordVerify}/>
             <button type="submit">Register</button>
