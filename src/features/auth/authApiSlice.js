@@ -4,28 +4,28 @@ export const authApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         login: builder.mutation({
             query: credentials => ({
-                url: 'http://localhost:3500/api/login',
+                url: 'http://localhost:4000/api/login',
                 method: 'POST',
                 body: { ...credentials }
             })
         }),
         register: builder.mutation({
             query: credentials => ({
-                url: 'http://localhost:3500/api/registerUser',
+                url: 'http://localhost:4000/api/registerUser',
                 method: 'POST',
                 body: { ...credentials }
             })
         }),
         loggedIn: builder.mutation({
             query: credentials => ({
-                url: 'http://localhost:3500/api/loggedIn',
+                url: 'http://localhost:4001/api/loggedIn',
                 method: 'GET',
             })
         }),
         refreshToken: builder.mutation({
             query: credentials => ({
-                url: 'http://localhost:3500/api/refreshToken',
-                method: 'GET',
+                url: 'http://localhost:4000/api/refreshToken',
+                method: 'POST',
             })
         }),
         logout: builder.mutation({

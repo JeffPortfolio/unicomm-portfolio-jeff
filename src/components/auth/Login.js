@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../../features/auth/authApiSlice";
-import { setCredentials } from "../../features/auth/authSlice";
+import { selectCurrentAppName, setCredentials } from "../../features/auth/authSlice";
 
 
 function Login() {
 
     const [user, setUser] = useState("")
     const [password, setPassword] = useState("")
+    const appName = useSelector(selectCurrentAppName)
 
     // const {getLoggedIn} = useContext(AuthContext)
     const navi = useNavigate()
@@ -20,7 +21,7 @@ function Login() {
         e.preventDefault()
 
         try {
-            const userData = await login({ user, password}).unwrap()
+            const userData = await login({ user, password, appName}).unwrap()
             dispatch(setCredentials({...userData, user: user}))
             setUser('')
             setPassword('')

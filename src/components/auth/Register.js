@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRegisterMutation } from "../../features/auth/authApiSlice";
-import { setCredentials } from "../../features/auth/authSlice";
+import { selectCurrentAppName, setCredentials } from "../../features/auth/authSlice";
 
 function Register() {
 
@@ -10,6 +10,7 @@ function Register() {
     const [user, setUser] = useState("")
     const [password, setPassword] = useState("")
     const [passwordVerify, setPasswordVerify] = useState("")
+    const appName = useSelector(selectCurrentAppName)
 
     // const {getLoggedIn} = useContext(AuthContext)
     const navi = useNavigate()
@@ -20,7 +21,7 @@ function Register() {
         e.preventDefault()
 
         try {
-            const userData = await register({ email, password, passwordVerify, user}).unwrap()
+            const userData = await register({ email, password, passwordVerify, user, appName}).unwrap()
             dispatch(setCredentials({...userData, user: email}))
             setEmail('')
             setPassword('')

@@ -16,7 +16,10 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     if (result?.error?.data?.statusCode === 403) {
         console.log('sendong refresh token')
         // send refresh
-        const refreshResult = await baseQuery('http://localhost:3500/api/refreshToken', api, extraOptions)
+        const refreshResult = await baseQuery(
+                {url: 'http://localhost:4000/api/refreshToken',
+                 method: 'POST',
+                 body: {appName: 'Test Application'}}, api, extraOptions)
         // console.log(refreshResult)
         if (refreshResult?.data) {
             const user = api.getState().auth.user
