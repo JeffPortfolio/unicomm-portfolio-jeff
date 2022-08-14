@@ -11,10 +11,10 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions)
-    console.log(`result from base query: ${JSON.stringify(result)}`)
+    // console.log(`result from base query: ${JSON.stringify(result)}`)
 
     if (result?.error?.data?.statusCode === 403) {
-        console.log('sendong refresh token')
+        // console.log('sendong refresh token')
         // send refresh
         const refreshResult = await baseQuery(
                 {url: 'http://localhost:4000/api/refreshToken',

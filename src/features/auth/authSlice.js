@@ -6,7 +6,7 @@ const authSlice = createSlice({
     reducers: {
         setCredentials: (state, action) => {
             const { user, roles, accessToken } = action.payload
-            console.log(`action Playload = ${JSON.stringify(action.payload)}`)
+            // console.log(`action Playload = ${JSON.stringify(action.payload)}`)
             state.user = user
             state.token = accessToken
             state.roles = roles

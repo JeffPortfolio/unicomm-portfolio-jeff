@@ -18,7 +18,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }),
         loggedIn: builder.mutation({
             query: credentials => ({
-                url: 'http://localhost:4001/api/loggedIn',
+                url: 'http://localhost:4000/api/loggedIn',
                 method: 'GET',
             })
         }),
