@@ -22,7 +22,7 @@ const Home = () => {
         <>
         <NavBar />
         <div className="pageContainer homeContainer">
-            <div className="homeHeader">Universe Commander</div>
+            <div className="homeHeader">Universe Commander1</div>
             <div>
                 <p>
                     This application allows a user to update and view the projects, roles, users and refresh tokens for the Portfolio universe, depending on the users rights.
