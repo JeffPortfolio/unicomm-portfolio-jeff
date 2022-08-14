@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import Landing from './components/Landing';
+import Home from './components/Home';
+import PersistLogin from './components/PersistLogin';
+import RequireAuth from './components/RequireAuth';
 
+const ROLES = {
+  'User': 1971
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route element={<PersistLogin />} >
+          <Route element={<RequireAuth allowedRoles={[ROLES.User]} />} >
+            <Route path="/" element={<Home />} />
+          </Route>
+        </Route>
+        <Route path="landing" element={<Landing />} />
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
+
