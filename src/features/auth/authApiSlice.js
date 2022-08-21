@@ -30,7 +30,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }),
         logout: builder.mutation({
             query: credentials => ({
-                url: '/api/logout',
+                url: 'http://localhost:4000/api/logout',
                 method: 'GET',
             })
         }),

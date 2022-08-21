@@ -1,11 +1,8 @@
 import React, {  useState } from 'react'
 import Login from './auth/Login'
 import Register from './auth/Register'
-// import useAuth from '../hooks/useAuth'
 
 const Landing = () => {
-    // const { auth } = useAuth()
-    // console.log(auth)
     const [loginState, setLoginState] = useState("login")
 
     
