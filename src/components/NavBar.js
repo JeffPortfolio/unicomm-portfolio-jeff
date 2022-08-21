@@ -14,7 +14,6 @@ const NavBar = () => {
             <li><Link to="/projects">Projects</Link></li>
             <li><Link to="/roles">Roles</Link></li>
             <li><Link to="/refresh">Refresh</Link></li>
-            {/* <li><Link to="/landing">Logout</Link></li> */}
             <li><LogoutBtn /></li>
             </ul>
         </header>

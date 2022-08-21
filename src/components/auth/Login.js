@@ -11,7 +11,6 @@ function Login() {
     const [password, setPassword] = useState("")
     const appName = useSelector(selectCurrentAppName)
 
-    // const {getLoggedIn} = useContext(AuthContext)
     const navi = useNavigate()
     const dispatch = useDispatch()
     const [login] = useLoginMutation()
@@ -27,7 +26,6 @@ function Login() {
             setPassword('')
             navi("/")
         } catch (error) {
-            console.log(error)
         }
     }
 

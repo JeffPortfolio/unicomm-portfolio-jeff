@@ -12,7 +12,6 @@ function Register() {
     const [passwordVerify, setPasswordVerify] = useState("")
     const appName = useSelector(selectCurrentAppName)
 
-    // const {getLoggedIn} = useContext(AuthContext)
     const navi = useNavigate()
     const dispatch = useDispatch()
     const [register] = useRegisterMutation()

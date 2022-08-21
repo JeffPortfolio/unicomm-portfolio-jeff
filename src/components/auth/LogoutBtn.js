@@ -13,9 +13,6 @@ function LogoutBtn() {
 
 
     async function logUserOut() {
-        // navi("/landing")
-        console.log ("logout")
-        // e.preventDefault()
 
         try {
             await logout().unwrap()
@@ -24,8 +21,6 @@ function LogoutBtn() {
         } catch (error) {
             console.log(error)
         }
-        // await axios.get("http://localhost:8000/api/logout")
-        // await getLoggedIn()
     }
 
     return <Link to="/landing" onClick={logUserOut}>Log Out</Link>
