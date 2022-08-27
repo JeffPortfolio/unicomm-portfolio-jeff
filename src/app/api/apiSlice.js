@@ -1,8 +1,9 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import { setCredentials, logOut } from '../../features/auth/authSlice'
+import { baseUrlAuth, appName } from "../../constants/global";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: process.env.BASE_URL,
+    // baseUrl: process.env.BASE_URL,
     credentials: 'include',
     prepareHeaders: (headers) => {
         return headers
@@ -14,9 +15,9 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
     if (result?.error?.data?.statusCode === 403) {
         const refreshResult = await baseQuery(
-                {url: 'http://localhost:4000/api/refreshToken',
+                {url: baseUrlAuth + '/api/refreshToken',
                  method: 'POST',
-                 body: {appName: 'UniComm Application'}}, api, extraOptions)
+                 body: {appName: appName}}, api, extraOptions)
         if (refreshResult?.data) {
             // store new token
             api.dispatch(setCredentials({...refreshResult.data}))
