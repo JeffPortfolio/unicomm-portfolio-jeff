@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../features/auth/authApiSlice";
-import { selectCurrentAppName, setCredentials } from "../../features/auth/authSlice";
+import { setCredentials } from "../../features/auth/authSlice";
+import { appName } from "../../constants/global";
 
 
 function Login() {
 
     const [user, setUser] = useState("")
     const [password, setPassword] = useState("")
-    const appName = useSelector(selectCurrentAppName)
 
     const navi = useNavigate()
     const dispatch = useDispatch()
