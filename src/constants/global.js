@@ -1,6 +1,6 @@
 
-const baseUrlApp = 'https://portfolio-aaas.jeffreyswheeler.com'
-const baseUrlAuth = 'https://portfolio-aaas.jeffreyswheeler.com'
+const baseUrlApp = 'https://test-login.jeffreyswheeler.com'
+const baseUrlAuth = 'https://test-login.jeffreyswheeler.com'
 const appName = 'UniComm Application'
 
 export { baseUrlApp, appName, baseUrlAuth }
